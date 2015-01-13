@@ -13,7 +13,7 @@ int main(int argc, const char * argv[]) {
         
         NSArray * sortedArray = [NSArray arrayWithObjects: @1, @2, @3,@4, @5, @6, nil];
         
-        NSNumber * wantedNumber = @2;
+        NSNumber * wantedNumber = @11;
         
         // to store the middle index, unsigned int: represents only non-negative numbers
         
@@ -26,16 +26,19 @@ int main(int argc, const char * argv[]) {
         BOOL numberIsFound = NO;
         
         // loop will only run whil min is less than or equal to max number, when min is larger than the max, the number doesnt exist
+       
+        int numberOfLocations = 0;
+        
         while (min<=max) {
             
             mid = (min + max) /2;
             
             if ([wantedNumber intValue] == [sortedArray[mid] intValue]) {
                 
-                NSLog(@"we located the number, its at index %lu", mid);
+                numberOfLocations = numberOfLocations + 1;
                 numberIsFound = YES;
-                break;
-                
+                NSLog(@"\nwe located the number, its at index %lu, it has %d locations", mid, numberOfLocations);
+      break;
                 
             }else if ([wantedNumber intValue]<[sortedArray[mid] intValue]) {
                 
@@ -45,17 +48,16 @@ int main(int argc, const char * argv[]) {
                 
                 min = mid + 1;
                 
-            }
-            
-            if (!numberIsFound) {
+        }
                 
-                NSLog(@"Sorry the number is not found");
-            }
+        }
+    
+        if (!numberIsFound) {
+            
+            NSLog(@"Sorry the number is not found");
             
         }
-
-        
-        
+    
     }
     return 0;
 }
