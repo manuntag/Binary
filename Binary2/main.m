@@ -10,8 +10,52 @@
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        // insert code here...
-        NSLog(@"Hello, World!");
+        
+        NSArray * sortedArray = [NSArray arrayWithObjects: @1, @2, @3,@4, @5, @6, nil];
+        
+        NSNumber * wantedNumber = @2;
+        
+        // to store the middle index, unsigned int: represents only non-negative numbers
+        
+        NSUInteger mid;
+        
+        NSUInteger min = 0;
+        
+        NSUInteger max = [sortedArray count]-1;
+        
+        BOOL numberIsFound = NO;
+        
+        // loop will only run whil min is less than or equal to max number, when min is larger than the max, the number doesnt exist
+        while (min<=max) {
+            
+            mid = (min + max) /2;
+            
+            if ([wantedNumber intValue] == [sortedArray[mid] intValue]) {
+                
+                NSLog(@"we located the number, its at index %lu", mid);
+                numberIsFound = YES;
+                break;
+                
+                
+            }else if ([wantedNumber intValue]<[sortedArray[mid] intValue]) {
+                
+                max = mid - 1;
+                
+            }else if ([wantedNumber intValue]>[sortedArray[mid] intValue]) {
+                
+                min = mid + 1;
+                
+            }
+            
+            if (!numberIsFound) {
+                
+                NSLog(@"Sorry the number is not found");
+            }
+            
+        }
+
+        
+        
     }
     return 0;
 }
