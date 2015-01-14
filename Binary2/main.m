@@ -13,7 +13,7 @@ int main(int argc, const char * argv[]) {
         
         NSArray * sortedArray = [NSArray arrayWithObjects: @1, @2, @3,@4, @5, @6, nil];
         
-        NSNumber * wantedNumber = @11;
+        NSNumber * wantedNumber = @2;
         
         // to store the middle index, unsigned int: represents only non-negative numbers
         
